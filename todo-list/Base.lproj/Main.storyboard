@@ -40,7 +40,7 @@
                                     <action selector="addTodo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qld-Sr-beu"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WM1-TF-zhG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WM1-TF-zhG" userLabel="Todo table view">
                                 <rect key="frame" x="0.0" y="255" width="375" height="523"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -81,6 +81,7 @@
                     </view>
                     <connections>
                         <outlet property="todoInput" destination="4LA-tk-1Pb" id="bm1-k6-nio"/>
+                        <outlet property="todoTable" destination="WM1-TF-zhG" id="fSZ-1e-997"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -24,4 +24,12 @@ class TodoList {
     func returnList() -> Array<Todo> {
         return todoList
     }
+    
+    func count() -> Int {
+        return todoList.count
+    }
+    
+    func getTodo(index: Int) -> Todo {
+        return todoList[index]
+    }
 }
