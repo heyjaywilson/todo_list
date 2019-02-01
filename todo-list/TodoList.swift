@@ -32,4 +32,18 @@ class TodoList {
     func getTodo(index: Int) -> Todo {
         return todoList[index]
     }
+    
+    func changeComplete(index: Int) {
+        todoList[index].complete = !todoList[index].complete
+    }
+    
+    func sortByCompleted(){
+        for (i, todo) in todoList.enumerated(){
+            if (todo.complete) {
+                let element = todoList.remove(at: i)
+                todoList.insert(element, at: todoList.count)
+                print(todoList)
+            }
+        }
+    }
 }
