@@ -42,7 +42,6 @@ class TodoList {
             if (todo.complete) {
                 let element = todoList.remove(at: i)
                 todoList.insert(element, at: todoList.count)
-                print(todoList)
             }
         }
     }

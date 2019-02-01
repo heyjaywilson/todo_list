@@ -80,10 +80,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     func addToList(resign:Bool) {
         todos.addTodo(todo: todoInput.text!)
-        print("\(todos.returnList())")
-
         todoInput.text = ""
-        
         if (resign == true){
             todoInput.resignFirstResponder()
         }
