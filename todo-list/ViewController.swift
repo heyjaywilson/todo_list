@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
     
 
     @IBOutlet weak var todoInput: UITextField!
@@ -24,6 +24,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         
         //table view setup
         todoTable.dataSource = self
+        todoTable.delegate = self
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
@@ -45,26 +46,45 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         return todos.count()
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Todo")! //1.
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Todo") as! UITableViewCell
         
-        let text = todos.getTodo(index: indexPath.row).task //2.
+        let text = todos.getTodo(index: indexPath.row).task
         
-        cell.textLabel?.text = text //3.
+        cell.textLabel?.text = text
         
-        return cell //4.
+        if(todos.getTodo(index: indexPath.row).complete) {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
+        
+        return cell
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        print("selected row")
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
+            if cell.accessoryType == .checkmark {
+                cell.accessoryType = .none
+            }
+            else {
+                cell.accessoryType = .checkmark
+            }
+            todos.changeComplete(index: indexPath.row)
+            todos.sortByCompleted()
+            todoTable.reloadData()
+        }
+    }
     // helper functions
     
     func addToList(resign:Bool) {
         todos.addTodo(todo: todoInput.text!)
-        print("\(todos.returnList())")
-
         todoInput.text = ""
-        
         if (resign == true){
             todoInput.resignFirstResponder()
         }
+        todos.sortByCompleted()
         todoTable.reloadData()
     }
 }
