@@ -33,6 +33,10 @@ class TodoList {
         return todoList[index]
     }
     
+    func deleteTodo(index: Int) {
+        todoList.remove(at: index)
+    }
+    
     func changeComplete(index: Int) {
         todoList[index].complete = !todoList[index].complete
     }

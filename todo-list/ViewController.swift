@@ -76,6 +76,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             todoTable.reloadData()
         }
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            todos.deleteTodo(index: indexPath.row)
+        }
+        tableView.deleteRows(at: [indexPath], with: .left)
+    }
+    
     // helper functions
     
     func addToList(resign:Bool) {
