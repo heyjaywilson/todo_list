@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type todo here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4LA-tk-1Pb">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap here to type todo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4LA-tk-1Pb">
                                 <rect key="frame" x="16" y="104" width="343" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="343" id="udp-PI-bv5"/>
@@ -33,15 +33,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTe-6B-xnF">
-                                <rect key="frame" x="154.66666666666666" y="150" width="66" height="30"/>
-                                <state key="normal" title="Add Todo"/>
-                                <connections>
-                                    <action selector="addTodo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qld-Sr-beu"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WM1-TF-zhG" userLabel="Todo table view">
-                                <rect key="frame" x="0.0" y="255" width="375" height="523"/>
+                                <rect key="frame" x="0.0" y="184" width="375" height="594"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="2" indentationWidth="0.0" reuseIdentifier="Todo" textLabel="qcp-AV-3bk" style="IBUITableViewCellStyleDefault" id="u3P-jT-IrG">
@@ -66,12 +59,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="WM1-TF-zhG" firstAttribute="top" secondItem="4LA-tk-1Pb" secondAttribute="bottom" constant="50" id="0V2-bA-ODN"/>
                             <constraint firstItem="SqG-We-wsy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="Fjh-ZT-KT9"/>
                             <constraint firstItem="SqG-We-wsy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="L0i-ZL-hZu"/>
-                            <constraint firstItem="WM1-TF-zhG" firstAttribute="top" secondItem="oTe-6B-xnF" secondAttribute="bottom" constant="75" id="M3g-Wm-UrW"/>
-                            <constraint firstItem="oTe-6B-xnF" firstAttribute="top" secondItem="4LA-tk-1Pb" secondAttribute="bottom" constant="16" id="Z1R-BC-VIX"/>
                             <constraint firstItem="4LA-tk-1Pb" firstAttribute="top" secondItem="SqG-We-wsy" secondAttribute="bottom" constant="16" id="aPp-wn-H9S"/>
-                            <constraint firstItem="oTe-6B-xnF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fzT-JD-7if"/>
                             <constraint firstItem="4LA-tk-1Pb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pQO-gJ-GAi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WM1-TF-zhG" secondAttribute="bottom" id="pTK-EX-G7y"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WM1-TF-zhG" secondAttribute="trailing" id="tGT-eV-ApP"/>

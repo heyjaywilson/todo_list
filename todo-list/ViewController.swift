@@ -29,7 +29,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
-        addToList(resign: false)
+        addToList(resign: true)
         return true
     }
     
