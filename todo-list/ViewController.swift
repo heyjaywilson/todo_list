@@ -29,8 +29,18 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
-        addToList(resign: true)
-        return true
+        if (todoInput.text == ""){
+            let alert = UIAlertController(title: "No task entered", message: "You cannot have a blank task. Tap OK and enter a task.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                NSLog("CLOSED ALERT")
+            }))
+            self.present(alert, animated: true, completion: nil)
+            return true
+        }
+        else {
+            addToList(resign: true)
+            return false
+        }
     }
     
     // table
