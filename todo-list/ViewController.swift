@@ -33,10 +33,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         return true
     }
     
-    @IBAction func addTodo(_ sender: Any) {
-        addToList(resign: true)
-        
-    }
     // table
     
     func numberOfSections(in tableView: UITableView) -> Int {
