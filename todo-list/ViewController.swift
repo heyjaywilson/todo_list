@@ -35,12 +35,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
                 NSLog("CLOSED ALERT")
             }))
             self.present(alert, animated: true, completion: nil)
-            return true
         }
         else {
             addToList(resign: true)
-            return false
         }
+        
+        return true
     }
     
     // table
