@@ -46,13 +46,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         return todos.count()
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Todo") as! UITableViewCell
+        let todo = todos.getTodo(index: indexPath.row)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Todo", for: indexPath)
         
-        let text = todos.getTodo(index: indexPath.row).task
+        cell.textLabel?.text = todo.value(forKeyPath: "task") as? String
+        let complete = todo.value(forKeyPath: "complete") as? Bool
         
-        cell.textLabel?.text = text
-        
-        if(todos.getTodo(index: indexPath.row).complete) {
+        if(complete == true) {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
@@ -61,7 +61,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        print("selected row")
+        
         tableView.deselectRow(at: indexPath, animated: true)
         
         if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
@@ -72,7 +72,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
                 cell.accessoryType = .checkmark
             }
             todos.changeComplete(index: indexPath.row)
-            todos.sortByCompleted()
             todoTable.reloadData()
         }
     }
@@ -80,19 +79,18 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             todos.deleteTodo(index: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .left)
         }
-        tableView.deleteRows(at: [indexPath], with: .left)
     }
     
     // helper functions
     
     func addToList(resign:Bool) {
-        todos.addTodo(todo: todoInput.text!)
+        todos.addTodo(task: todoInput.text!)
         todoInput.text = ""
         if (resign == true){
             todoInput.resignFirstResponder()
         }
-        todos.sortByCompleted()
         todoTable.reloadData()
     }
 }
